@@ -84,6 +84,7 @@ footer {
   display: flex;
   padding-top: 2rem;
   justify-content: space-between;
+  color: blue;
 }
 
 #book-categories > li > a {
@@ -120,6 +121,10 @@ footer {
 #contact-icons {
   color: blue;
   padding-right: 1rem;
+}
+
+#heart-icon {
+  color: red;
 }
 
 [class*="col-"] {
