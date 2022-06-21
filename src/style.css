@@ -85,9 +85,17 @@ footer {
   justify-content: space-between;
 }
 
+#book-categories > li > a {
+  color: black;
+}
+
 #social-icons {
   display: flex;
   column-gap: 2rem;
+}
+
+#social-icons > li > a:hover {
+  color: red;
 }
 
 #book-categories {
@@ -95,6 +103,10 @@ footer {
   flex-direction: column;
   row-gap: 1rem;
   padding-top: 2rem;
+}
+
+#book-categories > li > a:hover {
+  color: blue;
 }
 
 [class*="col-"] {
