@@ -71,7 +71,7 @@ header {
 }
 
 footer {
-  padding: 10rem 3rem 0.5rem 3rem;
+  padding: 30rem 3rem 0.5rem 3rem;
 }
 
 .upper-footer {
@@ -79,9 +79,22 @@ footer {
   justify-content: space-between;
 }
 
+.lower-footer {
+  display: flex;
+  padding-top: 2rem;
+  justify-content: space-between;
+}
+
 #social-icons {
   display: flex;
   column-gap: 2rem;
+}
+
+#book-categories {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding-top: 2rem;
 }
 
 [class*="col-"] {
