@@ -71,9 +71,12 @@ header {
 }
 
 footer {
+  padding: 10rem 3rem 0.5rem 3rem;
+}
+
+.upper-footer {
   display: flex;
   justify-content: space-between;
-  padding: 10rem 3rem 0.5rem 3rem;
 }
 
 #social-icons {
