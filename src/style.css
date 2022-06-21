@@ -2,3 +2,9 @@
   margin: 0;
   padding: 0;
 }
+
+header .logo {
+  background-image: url('./assets/img/Book-Logo.png');
+  width: 100px;
+  height: 100px;
+}
