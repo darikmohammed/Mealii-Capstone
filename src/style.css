@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
 :root {
   --primary-color: rgb(106, 93, 203);
 }
+
 * {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #ece9e9;
 }
 
 header {
@@ -23,16 +29,15 @@ header {
 .header-search {
   flex: 1;
 }
-.header-search #search-form {
-  display: flex;
-  gap: 0.5px;
-}
 
 #search-form {
+  display: flex;
+  gap: 0.5px;
   border: 1px solid black;
   border-radius: 10px;
   padding: 0 1rem;
 }
+
 #search-form input {
   flex: 1;
   height: 2rem;
