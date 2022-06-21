@@ -132,6 +132,10 @@ footer {
   float: left;
 }
 
+/* modal */
+
+
+
 /* Desktop */
 @media only screen and (min-width: 768px) {
   .col-1 {
