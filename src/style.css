@@ -99,6 +99,12 @@ footer {
   margin: 1rem;
 }
 
+.meal-youtube a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .meal-catagories > li > a {
   color: white;
   font-weight: bold;
@@ -276,13 +282,16 @@ article {
   border: none;
   background-color: #fff;
 }
+
 .meal-disc {
   width: 100%;
 }
+
 .meal-disc .meal-thumb img {
   width: 90%;
   border-radius: 30px;
 }
+
 .meal-disc .meal {
   display: flex;
   flex-direction: column;
@@ -358,11 +367,6 @@ article {
   border-radius: 4px;
 }
 
-.meal-youtube a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 .meal-instruction-header {
   display: flex;
   flex-direction: column;
@@ -377,6 +381,7 @@ article {
 .meal-instruction-header .meal-instructions {
   text-align: justify;
 }
+
 #meals-category-header {
   color: red;
 }
