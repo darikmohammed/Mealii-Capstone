@@ -75,8 +75,8 @@ footer {
 }
 
 .upper-footer {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
   column-gap: 2rem;
 }
 
@@ -180,5 +180,9 @@ footer {
 
   .col-12 {
     width: 100%;
+  }
+
+  .upper-footer {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
