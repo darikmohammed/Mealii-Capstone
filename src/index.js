@@ -11,7 +11,12 @@ const mealAPI = new MealAPI();
 // EventListener for the commentbutton
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
+  const modal = document.querySelector('.modal');
   commentButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      modal.style.display = 'block';
+    });
+
     button.getAttribute('id');
   });
 };
@@ -19,7 +24,7 @@ const commentEventButton = () => {
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
   const catagoriesList = document.querySelector(
-    '.meal-catagories-list .meal-catagories',
+    '.meal-catagories-list .meal-catagories'
   );
   catagoriesList.innerHTML = '';
   catagories.meals.forEach((catagory) => {
@@ -52,11 +57,11 @@ const displayCatagories = async () => {
   mealButtons.forEach((mealButton) => {
     mealButton.addEventListener('click', async () => {
       const allMeal = await mealAPI.generateMeals(
-        mealButton.getAttribute('id'),
+        mealButton.getAttribute('id')
       );
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
-        'id',
+        'id'
       )} Meal Category`;
       allMeal.meals.forEach((meal) => {
         Meals.innerHTML += `<div class="card">

@@ -231,7 +231,7 @@ article {
 
 /* modal */
 .modal {
-  /* display: none; */
+  display: none;
   position: fixed;
   background-color: #c1c7d0f7;
   z-index: 99;
