@@ -154,6 +154,16 @@ article {
   background-color: red;
 }
 
+.meal-card {
+  display: flex;
+  justify-content: center;
+}
+
+#meal-img {
+  width: 40%;
+  height: 10%;
+}
+
 [class*="col-"] {
   width: 100%;
   float: left;

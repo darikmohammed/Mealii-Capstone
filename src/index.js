@@ -30,7 +30,7 @@ const displayCatagories = async () => {
       Meals.innerHTML = '';
       allMeal.meals.forEach((meal) => {
         Meals.innerHTML += `<div class="card">
-        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+        <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <h3>${meal.strMeal}</h3>
         <button class="comment-btn" id="${meal.idMeal}">Comment</button>
     </div>`;
