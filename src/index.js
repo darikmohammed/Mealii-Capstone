@@ -12,14 +12,14 @@ const mealAPI = new MealAPI();
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
   commentButtons.forEach((button) => {
-    console.log(button.getAttribute('id'));
+    button.getAttribute('id');
   });
 };
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
   const catagoriesList = document.querySelector(
-    '.meal-catagories-list .meal-catagories'
+    '.meal-catagories-list .meal-catagories',
   );
   catagoriesList.innerHTML = '';
   catagories.meals.forEach((catagory) => {
@@ -52,11 +52,11 @@ const displayCatagories = async () => {
   mealButtons.forEach((mealButton) => {
     mealButton.addEventListener('click', async () => {
       const allMeal = await mealAPI.generateMeals(
-        mealButton.getAttribute('id')
+        mealButton.getAttribute('id'),
       );
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
-        'id'
+        'id',
       )} Meal Category`;
       allMeal.meals.forEach((meal) => {
         Meals.innerHTML += `<div class="card">

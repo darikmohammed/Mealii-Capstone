@@ -188,24 +188,6 @@ article {
   border-radius: 2rem;
 }
 
-.card {
-  position: relative;
-}
-
-.card .comment-btn {
-  position: absolute;
-  bottom: 0;
-}
-.meal-card > h2 {
-  margin-bottom: 1rem;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 2rem;
-}
-
 .comment-btn {
   width: 80%;
   height: 2rem;
@@ -214,6 +196,25 @@ article {
   color: white;
   border-radius: 10px;
   border: none;
+}
+
+.card {
+  position: relative;
+}
+
+.card .comment-btn {
+  position: absolute;
+  bottom: 0;
+}
+
+.meal-card > h2 {
+  margin-bottom: 1rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
 }
 
 .comment-btn:hover {
@@ -274,6 +275,7 @@ article {
   .col-12 {
     width: 100%;
   }
+
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
