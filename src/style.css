@@ -145,8 +145,8 @@ article {
 
 .meal-catagories > li {
   background-color: blue;
-  padding: 0.2rem 1rem;
-  margin: 1rem;
+  padding: 0.1rem 1rem;
+  margin: 0.5rem 1rem;
   border-radius: 8px;
 }
 
