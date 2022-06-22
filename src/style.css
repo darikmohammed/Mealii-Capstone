@@ -76,16 +76,24 @@ footer {
 }
 
 .upper-footer {
-  display: flex;
-  justify-content: space-between;
-  column-gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 .lower-footer {
   display: flex;
-  padding-top: 2rem;
+  flex-direction: column;
+  margin-top: 2rem;
   justify-content: space-between;
-  color: blue;
+  color: white;
+  background-color: black;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.lower-footer p {
+  margin: 1rem;
 }
 
 .meal-catagories > li > a {
@@ -177,7 +185,6 @@ article {
 }
 
 .meal-card {
-  margin: 2rem;
   align-items: center;
   justify-content: center;
 }
@@ -287,7 +294,12 @@ article {
     width: 100%;
   }
 
+  .upper-footer,
   .cards {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lower-footer {
+    flex-direction: row;
   }
 }
