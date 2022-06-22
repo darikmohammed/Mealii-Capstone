@@ -221,9 +221,19 @@ article {
   background-color: red;
 }
 
+.meal-catagories-list > h2 {
+  font-size: 2rem;
+  color: black;
+  text-shadow: 2px 2px #39d42e
+}
+
 [class*='col-'] {
   width: 100%;
   float: left;
+}
+
+#meals-category-header {
+  color: red;
 }
 
 /* Desktop */
