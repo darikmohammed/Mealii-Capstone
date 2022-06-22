@@ -224,7 +224,7 @@ article {
 .meal-catagories-list > h2 {
   font-size: 2rem;
   color: black;
-  text-shadow: 2px 2px #39d42e
+  text-shadow: 2px 2px #39d42e;
 }
 
 [class*='col-'] {
