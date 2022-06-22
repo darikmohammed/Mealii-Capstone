@@ -71,7 +71,7 @@ header {
 }
 
 footer {
-  padding: 30rem 3rem 0.5rem 3rem;
+  padding: 3rem;
 }
 
 .upper-footer {
@@ -196,6 +196,8 @@ article {
   background-color: blue;
   font-weight: bold;
   color: white;
+  border-radius: 10px;
+  border: none;
 }
 
 .comment-btn:hover {
