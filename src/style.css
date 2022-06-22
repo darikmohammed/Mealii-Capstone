@@ -87,7 +87,7 @@ footer {
   display: flex;
   padding-top: 2rem;
   justify-content: space-between;
-  color: blue;
+  color: var(--primary-color);
 }
 
 .meal-catagories > li > a {
@@ -116,7 +116,7 @@ footer {
 }
 
 #book-categories > li > a:hover {
-  color: blue;
+  color: var(--primary-color);
 }
 
 #contacts {
@@ -127,7 +127,7 @@ footer {
 }
 
 #contact-icons {
-  color: blue;
+  color: var(--primary-color);
   padding-right: 1rem;
 }
 
@@ -137,7 +137,7 @@ footer {
 }
 
 #like-icon:hover {
-  color: blue;
+  color: var(--primary-color);
 }
 
 .description {
@@ -168,7 +168,7 @@ article {
 }
 
 .meal-catagories > li {
-  background-color: blue;
+  background-color: var(--primary-color);
   padding: 0.1rem 1rem;
   margin: 0.5rem 1rem;
   border-radius: 8px;
@@ -194,7 +194,7 @@ article {
 .comment-btn {
   width: 80%;
   height: 2rem;
-  background-color: blue;
+  background-color: var(--primary-color);
   font-weight: bold;
   color: white;
   border-radius: 10px;
