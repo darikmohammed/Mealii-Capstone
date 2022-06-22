@@ -22,10 +22,21 @@ class MealAPI {
         header: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      },
+      }
     );
     const allMeals = await response.json();
     return allMeals;
+  };
+
+  getMealDetail = async (mealId) => {
+    const response = await fetch(`${this.baseURL}lookup.php?i=${mealId}`, {
+      method: 'GET',
+      header: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    const mealDetail = await response.json();
+    return mealDetail;
   };
 }
 

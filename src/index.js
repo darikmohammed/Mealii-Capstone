@@ -13,11 +13,11 @@ const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
   const modal = document.querySelector('.modal');
   commentButtons.forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       modal.style.display = 'block';
+      const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
+      console.log(meals);
     });
-
-    button.getAttribute('id');
   });
 };
 
