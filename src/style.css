@@ -127,6 +127,33 @@ footer {
   color: red;
 }
 
+article {
+  padding: 0.5rem 3rem;
+}
+
+.meal-catagories {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meal-catagories > li > a {
+  color: white;
+  font-weight: bold;
+}
+
+.meal-catagories > li {
+  background-color: blue;
+  padding: 0.2rem 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+}
+
+.meal-catagories > :hover {
+  background-color: red;
+}
+
 [class*="col-"] {
   width: 100%;
   float: left;
