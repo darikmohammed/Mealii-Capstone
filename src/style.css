@@ -15,11 +15,12 @@ body {
 }
 
 header {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   background-color: #ece9e9;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .logo .logo-text {
