@@ -141,7 +141,7 @@ footer {
 
 #like-description {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
 }
@@ -169,12 +169,14 @@ article {
   border-radius: 8px;
 }
 
-.meal-catagories > :hover {
+.meal-catagories :hover {
   background-color: red;
 }
 
 .meal-card {
   margin: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 #meal-img {
@@ -186,6 +188,18 @@ article {
 
 .card {
   padding-bottom: 5rem;
+}
+
+.comment-btn {
+  width: 80%;
+  height: 2rem;
+  background-color: blue;
+  font-weight: bold;
+  color: white;
+}
+
+.comment-btn:hover {
+  background-color: red;
 }
 
 [class*="col-"] {

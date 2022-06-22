@@ -2,7 +2,7 @@ import './style.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 
-import MealAPI from './modules/mealAPI';
+import MealAPI from './modules/mealAPI.js';
 
 const Meals = document.querySelector('#cards');
 
@@ -19,13 +19,13 @@ const displayCatagories = async () => {
     <a href="#" class="catagory-button" id="${catagory.strCategory}">${catagory.strCategory}</a>
 </li>`;
   });
-  //create an event listener for the meal buttons
 
+  // create an event listener for the meal buttons
   const mealButtons = document.querySelectorAll('.catagory-button');
   mealButtons.forEach((mealButton) => {
     mealButton.addEventListener('click', async () => {
       const allMeal = await mealAPI.generateMeals(
-        mealButton.getAttribute('id')
+        mealButton.getAttribute('id'),
       );
       Meals.innerHTML = '';
       allMeal.meals.forEach((meal) => {
@@ -37,7 +37,7 @@ const displayCatagories = async () => {
             <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
             <span>5 likes<span>
           </div>
-        </div>
+        </div> <br>
         <button class="comment-btn" id="${meal.idMeal}">Comment</button>
     </div>`;
       });
@@ -45,7 +45,7 @@ const displayCatagories = async () => {
 
       const commentButtons = document.querySelectorAll('.comment-btn');
       commentButtons.forEach((button) => {
-        console.log(button.getAttribute('id'));
+        button.getAttribute('id');
       });
     });
   });
