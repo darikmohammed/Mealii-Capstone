@@ -12,7 +12,7 @@
 }
 
 .row::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -30,11 +30,12 @@ body {
 }
 
 header {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   background-color: #ece9e9;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .logo .logo-text {
@@ -71,7 +72,7 @@ header {
 }
 
 footer {
-  padding: 30rem 3rem 0.5rem 3rem;
+  padding: 3rem;
 }
 
 .upper-footer {
@@ -82,13 +83,23 @@ footer {
 
 .lower-footer {
   display: flex;
+  flex-direction: column;
   margin-top: 2rem;
-  height: 4rem;
+  padding: 1rem;
   justify-content: space-between;
   color: white;
   background-color: black;
   align-items: center;
   padding: 0 2rem;
+}
+
+.lower-footer p {
+  margin: 1rem;
+}
+
+.meal-catagories > li > a {
+  color: white;
+  font-weight: bold;
 }
 
 #book-categories > li > a {
@@ -127,11 +138,99 @@ footer {
   padding-right: 1rem;
 }
 
-#heart-icon {
+#heart-icon,
+#like-icon {
   color: red;
 }
 
-[class*="col-"] {
+#like-icon:hover {
+  color: blue;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+#like-description {
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+article {
+  padding: 0.5rem 3rem;
+}
+
+.meal-catagories {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meal-catagories > li {
+  background-color: blue;
+  padding: 0.1rem 1rem;
+  margin: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.meal-catagories :hover {
+  background-color: red;
+}
+
+.meal-card {
+  align-items: center;
+  justify-content: center;
+}
+
+#meal-img {
+  width: 80%;
+  height: auto;
+  padding-bottom: 2rem;
+  border-radius: 2rem;
+}
+
+.comment-btn {
+  width: 80%;
+  height: 2rem;
+  background-color: blue;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+.card {
+  position: relative;
+}
+
+.card .comment-btn {
+  position: absolute;
+  bottom: 0;
+}
+
+.meal-card > h2 {
+  margin-bottom: 1rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+}
+
+.comment-btn:hover {
+  background-color: red;
+}
+
+[class*='col-'] {
   width: 100%;
   float: left;
 }
@@ -186,7 +285,11 @@ footer {
     width: 100%;
   }
 
-  .upper-footer {
+  .upper-footer,
+  .cards {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .lower-footer {
+    flex-direction: row;
   }
 }
