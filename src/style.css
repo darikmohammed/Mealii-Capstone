@@ -85,7 +85,6 @@ footer {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  padding: 1rem;
   justify-content: space-between;
   color: white;
   background-color: black;
@@ -289,6 +288,7 @@ article {
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .lower-footer {
     flex-direction: row;
   }
