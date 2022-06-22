@@ -11,7 +11,7 @@ const mealAPI = new MealAPI();
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
   const catagoriesList = document.querySelector(
-    '.meal-catagories-list .meal-catagories'
+    '.meal-catagories-list .meal-catagories',
   );
   catagoriesList.innerHTML = '';
   catagories.meals.forEach((catagory) => {

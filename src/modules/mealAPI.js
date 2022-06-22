@@ -22,7 +22,7 @@ class MealAPI {
         header: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      }
+      },
     );
     const allMeals = await response.json();
     return allMeals;

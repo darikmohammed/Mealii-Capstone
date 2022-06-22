@@ -87,6 +87,11 @@ footer {
   color: blue;
 }
 
+.meal-catagories > li > a {
+  color: white;
+  font-weight: bold;
+}
+
 #book-categories > li > a {
   color: black;
 }
@@ -155,11 +160,6 @@ article {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.meal-catagories > li > a {
-  color: white;
-  font-weight: bold;
 }
 
 .meal-catagories > li {
