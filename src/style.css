@@ -77,14 +77,18 @@ footer {
 .upper-footer {
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 2rem;
+  gap: 2rem;
 }
 
 .lower-footer {
   display: flex;
-  padding-top: 2rem;
+  margin-top: 2rem;
+  height: 4rem;
   justify-content: space-between;
-  color: blue;
+  color: white;
+  background-color: black;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 #book-categories > li > a {
