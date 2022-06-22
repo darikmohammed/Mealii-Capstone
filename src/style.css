@@ -12,7 +12,7 @@
 }
 
 .row::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }
@@ -139,16 +139,18 @@ footer {
 
 .description {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   width: 80%;
+  margin-bottom: 2rem;
 }
 
 #like-description {
+  align-self: flex-start;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
   align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
 article {
@@ -187,7 +189,21 @@ article {
 }
 
 .card {
-  padding-bottom: 5rem;
+  position: relative;
+}
+
+.card .comment-btn {
+  position: absolute;
+  bottom: 0;
+}
+.meal-card > h2 {
+  margin-bottom: 1rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
 }
 
 .comment-btn {
@@ -204,7 +220,7 @@ article {
   background-color: red;
 }
 
-[class*="col-"] {
+[class*='col-'] {
   width: 100%;
   float: left;
 }
@@ -257,5 +273,8 @@ article {
 
   .col-12 {
     width: 100%;
+  }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
