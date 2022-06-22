@@ -29,9 +29,15 @@ const displayCatagories = async () => {
       );
       Meals.innerHTML = '';
       allMeal.meals.forEach((meal) => {
-        Meals.innerHTML += `<div class="card">
+        Meals.innerHTML += `<div class="card col-4">
         <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
+        <div class="description">
         <h3>${meal.strMeal}</h3>
+          <div id="like-description">
+            <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
+            <span>5 likes<span>
+          </div>
+        </div>
         <button class="comment-btn" id="${meal.idMeal}">Comment</button>
     </div>`;
       });

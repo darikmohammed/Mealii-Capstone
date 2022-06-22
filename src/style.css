@@ -123,8 +123,27 @@ footer {
   padding-right: 1rem;
 }
 
-#heart-icon {
+#heart-icon,
+#like-icon {
   color: red;
+}
+
+#like-icon:hover {
+  color: blue;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+#like-description {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 article {
@@ -155,13 +174,18 @@ article {
 }
 
 .meal-card {
-  display: flex;
-  justify-content: center;
+  margin: 2rem;
 }
 
 #meal-img {
-  width: 40%;
-  height: 10%;
+  width: 80%;
+  height: auto;
+  padding-bottom: 2rem;
+  border-radius: 2rem;
+}
+
+.card {
+  padding-bottom: 5rem;
 }
 
 [class*="col-"] {
