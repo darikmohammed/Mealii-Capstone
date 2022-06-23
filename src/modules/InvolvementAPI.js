@@ -1,7 +1,6 @@
 class InvolvementAPI {
   constructor() {
-    this.baseUrl =
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+    this.baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
     this.APIid = 'AxlSVRjF4ReZv9RGWYte';
   }
 
@@ -23,7 +22,7 @@ class InvolvementAPI {
 
   getComment = async (itemid) => {
     const response = await fetch(
-      `${this.baseUrl}${this.APIid}/comments?item_id=${itemid}`
+      `${this.baseUrl}${this.APIid}/comments?item_id=${itemid}`,
     );
     const comments = await response.json();
     return comments;
