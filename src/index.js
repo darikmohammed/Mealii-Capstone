@@ -19,6 +19,14 @@ const commentEventButton = () => {
     button.addEventListener('click', async () => {
       modal.style.display = 'block';
       const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
+      const comments = await involvementAPI.getComment(
+        button.getAttribute('id')
+      );
+      console.log(comments);
+      // add formbutton id
+      document
+        .querySelector('#comment-form button')
+        .setAttribute('id', meals.meals[0].idMeal);
       document.querySelector(
         '.meal-thumb'
       ).innerHTML = `<img src="${meals.meals[0].strMealThumb}"
@@ -36,12 +44,6 @@ const commentEventButton = () => {
         class="fa-brands fa-youtube"></i>
     <p>YouTube</p>
 </a>`;
-      const tags = meals.meals[0].strTags.split(',');
-      const ulTags = document.querySelector('.meal-tags ul');
-      ulTags.innerHTML = '';
-      tags.forEach((tag) => {
-        ulTags.innerHTML += `<li>${tag}</li>`;
-      });
     });
   });
 };
@@ -114,4 +116,15 @@ closeBtn.addEventListener('click', () => {
 displayCatagories();
 
 // Involvement API
+const commentForm = document.querySelector('#comment-form');
 
+commentForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const id = document.querySelector('#comment-form button').getAttribute('id');
+  const name = document.querySelector('#comment-form input').value;
+  const comment = document.querySelector('#comment-form textarea').value;
+  const result = await involvementAPI.createComment(id, name, comment);
+  console.log(result);
+  document.querySelector('#comment-form textarea').value = '';
+  document.querySelector('#comment-form input').value = '';
+});
