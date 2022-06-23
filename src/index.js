@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 import MealAPI from './modules/mealAPI.js';
-import InvolvementAPI from './modules/InvolvementAPI';
+import InvolvementAPI from './modules/InvolvementAPI.js';
 
 const Meals = document.querySelector('#cards');
 const modal = document.querySelector('.modal');
@@ -19,27 +19,24 @@ const commentEventButton = () => {
     button.addEventListener('click', async () => {
       modal.style.display = 'block';
       const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
-      const comments = await involvementAPI.getComment(
-        button.getAttribute('id')
-      );
-      console.log(comments);
+      //   const comments = await involvementAPI.getComment(
+      //     button.getAttribute('id'),
+      //   );
       // add formbutton id
       document
         .querySelector('#comment-form button')
         .setAttribute('id', meals.meals[0].idMeal);
       document.querySelector(
-        '.meal-thumb'
+        '.meal-thumb',
       ).innerHTML = `<img src="${meals.meals[0].strMealThumb}"
       alt="${meals.meals[0].strMeal}">`;
-      document.querySelector('.meal-title').textContent =
-        meals.meals[0].strMeal;
+      document.querySelector('.meal-title').textContent = meals.meals[0].strMeal;
       document.querySelector(
-        '.meal-category'
+        '.meal-category',
       ).textContent = `${meals.meals[0].strCategory}, ${meals.meals[0].strArea}`;
-      document.querySelector('.meal-instructions').textContent =
-        meals.meals[0].strInstructions;
+      document.querySelector('.meal-instructions').textContent = meals.meals[0].strInstructions;
       document.querySelector(
-        '.meal-youtube'
+        '.meal-youtube',
       ).innerHTML = `<a href="${meals.meals[0].strYoutube}"><i
         class="fa-brands fa-youtube"></i>
     <p>YouTube</p>
@@ -51,7 +48,7 @@ const commentEventButton = () => {
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
   const catagoriesList = document.querySelector(
-    '.meal-catagories-list .meal-catagories'
+    '.meal-catagories-list .meal-catagories',
   );
   catagoriesList.innerHTML = '';
   catagories.meals.forEach((catagory) => {
@@ -84,11 +81,11 @@ const displayCatagories = async () => {
   mealButtons.forEach((mealButton) => {
     mealButton.addEventListener('click', async () => {
       const allMeal = await mealAPI.generateMeals(
-        mealButton.getAttribute('id')
+        mealButton.getAttribute('id'),
       );
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
-        'id'
+        'id',
       )} Meal Category`;
       allMeal.meals.forEach((meal) => {
         Meals.innerHTML += `<div class="card">

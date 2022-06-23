@@ -64,6 +64,13 @@ header {
   padding-left: 1rem;
 }
 
+#comment-form input {
+  height: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+}
+
 #search-form input:focus {
   outline: none;
 }
@@ -417,6 +424,7 @@ article {
   padding: 1rem;
   gap: 1rem;
 }
+
 .comment-date {
   color: #dfdcdc;
 }
@@ -433,13 +441,6 @@ article {
   flex-direction: column;
   padding: 3rem;
   gap: 1rem;
-}
-
-#comment-form input {
-  height: 1rem;
-  padding: 1rem;
-  border: 2px solid var(--primary-color);
-  border-radius: 4px;
 }
 
 #comment-form textarea {
@@ -459,6 +460,7 @@ article {
 
 .new-comment-status {
   display: none;
+
   /* background-color: #d4342e; */
   color: #fff;
   border-radius: 5px;
@@ -466,6 +468,7 @@ article {
   padding: 1rem;
   align-self: flex-start;
 }
+
 /* Desktop */
 @media only screen and (min-width: 768px) {
   .col-1 {
