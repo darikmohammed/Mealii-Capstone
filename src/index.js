@@ -25,19 +25,25 @@ const commentEventButton = () => {
       // add formbutton id
       const commentDiv = document.querySelector('.meal-comments');
       commentDiv.innerHTML = `<h2>Comments</h2>`;
+      if (comments.error) {
+        commentDiv.innerHTML += `<div> 
+            <p> No Comments </p>
+          </div>`;
+      } else {
+        comments.forEach((comment) => {
+          commentDiv.innerHTML += `<div class="comment">
+          <div class="user-identifier">
+              <i class="fa-solid fa-user"></i>
+              <div class="comment-user-name">
+                  <p>${comment.username}</p>
+                  <p class="comment-date">${comment.creation_date}</p>
+              </div>
+          </div>
+          <p>"${comment.comment}"</p>
+      </div>`;
+        });
+      }
 
-      comments.forEach((comment) => {
-        commentDiv.innerHTML += `<div class="comment">
-        <div class="user-identifier">
-            <i class="fa-solid fa-user"></i>
-            <div class="comment-user-name">
-                <p>${comment.username}</p>
-                <p class="comment-date">${comment.creation_date}</p>
-            </div>
-        </div>
-        <p>"${comment.comment}"</p>
-    </div>`;
-      });
       document
         .querySelector('#comment-form button')
         .setAttribute('id', meals.meals[0].idMeal);
@@ -191,7 +197,29 @@ commentForm.addEventListener('submit', async (e) => {
   statusUpdate.innerHTML = `${result}! Sucessfully.`;
   statusUpdate.style.display = 'block';
   statusUpdate.style.backgroundColor = '#39d42e';
-  setTimeout(() => {
+  setTimeout(async () => {
     statusUpdate.style.display = 'none';
+    const comments = await involvementAPI.getComment(id);
+    // add formbutton id
+    const commentDiv = document.querySelector('.meal-comments');
+    commentDiv.innerHTML = `<h2>Comments</h2>`;
+    if (comments.error) {
+      commentDiv.innerHTML += `<div> 
+          <p> No Comments </p>
+        </div>`;
+    } else {
+      comments.forEach((comment) => {
+        commentDiv.innerHTML += `<div class="comment">
+        <div class="user-identifier">
+            <i class="fa-solid fa-user"></i>
+            <div class="comment-user-name">
+                <p>${comment.username}</p>
+                <p class="comment-date">${comment.creation_date}</p>
+            </div>
+        </div>
+        <p>"${comment.comment}"</p>
+    </div>`;
+      });
+    }
   }, 5000);
 });
