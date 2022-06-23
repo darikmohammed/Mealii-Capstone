@@ -96,6 +96,8 @@ const likeEventButton = () => {
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
+  const countMeals = catagories.meals.length;
+  document.getElementById('count-meals').innerHTML = `All Meal Categories (${countMeals})`;
   const catagoriesList = document.querySelector(
     '.meal-catagories-list .meal-catagories',
   );

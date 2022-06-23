@@ -23,6 +23,11 @@ a {
   color: inherit;
 }
 
+#count-meals {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
 ul {
   list-style-type: none;
 }
