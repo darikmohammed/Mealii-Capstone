@@ -19,6 +19,8 @@
 
 a {
   text-decoration: none;
+  cursor: pointer;
+  color: inherit;
 }
 
 ul {
@@ -86,6 +88,7 @@ footer {
   flex-direction: column;
   margin-top: 2rem;
   justify-content: space-between;
+  color: var(--primary-color);
   color: white;
   background-color: black;
   align-items: center;
@@ -94,6 +97,12 @@ footer {
 
 .lower-footer p {
   margin: 1rem;
+}
+
+.meal-youtube a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .meal-catagories > li > a {
@@ -122,7 +131,7 @@ footer {
 }
 
 #book-categories > li > a:hover {
-  color: blue;
+  color: var(--primary-color);
 }
 
 #contacts {
@@ -133,7 +142,7 @@ footer {
 }
 
 #contact-icons {
-  color: blue;
+  color: var(--primary-color);
   padding-right: 1rem;
 }
 
@@ -143,7 +152,7 @@ footer {
 }
 
 #like-icon:hover {
-  color: blue;
+  color: var(--primary-color);
 }
 
 .description {
@@ -174,7 +183,7 @@ article {
 }
 
 .meal-catagories > li {
-  background-color: blue;
+  background-color: var(--primary-color);
   padding: 0.1rem 1rem;
   margin: 0.5rem 1rem;
   border-radius: 8px;
@@ -199,7 +208,7 @@ article {
 .comment-btn {
   width: 80%;
   height: 2rem;
-  background-color: blue;
+  background-color: var(--primary-color);
   font-weight: bold;
   color: white;
   border-radius: 10px;
@@ -238,6 +247,139 @@ article {
 [class*='col-'] {
   width: 100%;
   float: left;
+}
+
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  background-color: #c1c7d0f7;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+}
+
+.modal-contain {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  width: 70%;
+  margin: auto auto auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-contain .close-modal {
+  align-self: flex-end;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  background-color: #fff;
+}
+
+.meal-disc {
+  width: 100%;
+}
+
+.meal-disc .meal-thumb img {
+  width: 90%;
+  border-radius: 30px;
+}
+
+.meal-disc .meal {
+  display: flex;
+  flex-direction: column;
+}
+
+.meal .title {
+  display: flex;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  align-items: center;
+  text-align: start;
+}
+
+.title .meal-category {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.meal .tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.tags .meal-tags {
+  display: flex;
+}
+
+.tags .meal-tags ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.tags .meal-tags ul li {
+  background-color: #ece9e9;
+  color: var(--primary-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.tags .meal-links {
+  display: flex;
+}
+
+.tags .meal-links ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tags .meal-links ul li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.meal-comment-list {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.meal-youtube {
+  background-color: rgb(187, 39, 26);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.meal-instruction-header {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  padding: 2rem;
+}
+
+.meal-instruction-header h2 {
+  padding-bottom: 1rem;
+}
+
+.meal-instruction-header .meal-instructions {
+  text-align: justify;
 }
 
 #meals-category-header {
