@@ -82,7 +82,12 @@ const displayCatagories = async () => {
   mealCategoryHeader.textContent = 'Our Beef Meal Category';
   allMeal.meals.forEach(async (meal) => {
     const likes = await involvementAPI.getLikes();
-    const item = likes.find((element) => element.item_id === meal.idMeal);
+    let item = likes.find((element) => element.item_id === meal.idMeal);
+    if (item === undefined) {
+      item = {
+        likes: 0,
+      };
+    }
     Meals.innerHTML += `<div class="card">
     <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
     <div class="description">
@@ -112,7 +117,12 @@ const displayCatagories = async () => {
       )} Meal Category`;
       allMeal.meals.forEach(async (meal) => {
         const likes = await involvementAPI.getLikes();
-        const item = likes.find((element) => element.item_id === meal.idMeal);
+        let item = likes.find((element) => element.item_id === meal.idMeal);
+        if (item === undefined) {
+          item = {
+            likes: 0,
+          };
+        }
         Meals.innerHTML += `<div class="card">
         <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <div class="description">
