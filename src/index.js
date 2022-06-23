@@ -44,6 +44,34 @@ const commentEventButton = () => {
     });
   });
 };
+// EventListener for the like button
+
+const likeEventButton = () => {
+  const likeButton = document.querySelectorAll('.like-meal');
+  likeButton.forEach((button) => {
+    button.addEventListener('click', async () => {
+      await involvementAPI.postLike(button.getAttribute('id'));
+      const statusUpdate = document.querySelector(
+        `.new-like-status-${button.getAttribute('id')}`,
+      );
+      statusUpdate.innerHTML = 'Liked!';
+      statusUpdate.style.display = 'block';
+      statusUpdate.style.backgroundColor = '#39d42e';
+      setTimeout(() => {
+        statusUpdate.style.display = 'none';
+      }, 5000);
+      // update the like display
+      const likes = await involvementAPI.getLikes();
+      const item = likes.find(
+        (element) => element.item_id === button.getAttribute('id'),
+      );
+      const likeDisplaySpan = document.querySelector(
+        `#span-${button.getAttribute('id')}`,
+      );
+      likeDisplaySpan.innerHTML = `${item.likes} Likes`;
+    });
+  });
+};
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
@@ -71,9 +99,10 @@ const displayCatagories = async () => {
     Meals.innerHTML += `<div class="card">
     <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
     <div class="description">
+    <p class="new-like-status new-like-status-${meal.idMeal}">Created</p>
     <h3>${meal.strMeal}</h3>
       <div id="like-description">
-        <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
+        <span class="like-meal" id="${meal.idMeal}"><i id="like-icon" class="fa-solid fa-heart"></i></span>
         <span id="span-${meal.idMeal}">${item.likes} Likes<span>
       </div>
     </div> <br>
@@ -82,7 +111,7 @@ const displayCatagories = async () => {
   });
 
   commentEventButton();
-
+  likeEventButton();
   // create an event listener for the meal buttons
   const mealButtons = document.querySelectorAll('.catagory-button');
   mealButtons.forEach((mealButton) => {
@@ -105,9 +134,11 @@ const displayCatagories = async () => {
         Meals.innerHTML += `<div class="card">
         <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <div class="description">
+    <p class="new-like-status new-like-status-${meal.idMeal}">Created</p>
+
         <h3>${meal.strMeal}</h3>
           <div id="like-description">
-            <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
+            <span class="like-meal" id="${meal.idMeal}"><i id="like-icon" class="fa-solid fa-heart"></i></span>
             <span id="span-${meal.idMeal}">${item.likes} Likes<span>
           </div>
         </div> <br>
@@ -116,6 +147,7 @@ const displayCatagories = async () => {
       });
       // create an event listener for the comment buttons
       commentEventButton();
+      likeEventButton();
     });
   });
 };
