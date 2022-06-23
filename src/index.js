@@ -58,16 +58,23 @@ const displayCatagories = async () => {
   });
 
   const allMeal = await mealAPI.generateMeals('Beef');
+  const likes = await involvementAPI.getLikes();
   Meals.innerHTML = '';
   mealCategoryHeader.textContent = 'Our Beef Meal Category';
   allMeal.meals.forEach((meal) => {
+    let item = likes.find((element) => element.item_id === meal.idMeal);
+    if (item === undefined) {
+      item = {
+        likes: 0,
+      };
+    }
     Meals.innerHTML += `<div class="card">
     <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
     <div class="description">
     <h3>${meal.strMeal}</h3>
       <div id="like-description">
         <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
-        <span>5 likes<span>
+        <span id="span-${meal.idMeal}">${item.likes} Likes<span>
       </div>
     </div> <br>
     <button class="comment-btn" id="${meal.idMeal}">Comment</button>
@@ -83,18 +90,25 @@ const displayCatagories = async () => {
       const allMeal = await mealAPI.generateMeals(
         mealButton.getAttribute('id'),
       );
+      const likes = await involvementAPI.getLikes();
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
         'id',
       )} Meal Category`;
       allMeal.meals.forEach((meal) => {
+        let item = likes.find((element) => element.item_id === meal.idMeal);
+        if (item === undefined) {
+          item = {
+            likes: 0,
+          };
+        }
         Meals.innerHTML += `<div class="card">
         <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <div class="description">
         <h3>${meal.strMeal}</h3>
           <div id="like-description">
             <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
-            <span>5 likes<span>
+            <span id="span-${meal.idMeal}">${item.likes} Likes<span>
           </div>
         </div> <br>
         <button class="comment-btn" id="${meal.idMeal}">Comment</button>
