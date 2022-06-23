@@ -124,7 +124,14 @@ commentForm.addEventListener('submit', async (e) => {
   const name = document.querySelector('#comment-form input').value;
   const comment = document.querySelector('#comment-form textarea').value;
   const result = await involvementAPI.createComment(id, name, comment);
-  console.log(result);
   document.querySelector('#comment-form textarea').value = '';
   document.querySelector('#comment-form input').value = '';
+  const statusUpdate = document.querySelector('.new-comment-status');
+
+  statusUpdate.innerHTML = `${result}! Sucessfully.`;
+  statusUpdate.style.display = 'block';
+  statusUpdate.style.backgroundColor = '#39d42e';
+  setTimeout(() => {
+    statusUpdate.style.display = 'none';
+  }, 5000);
 });
