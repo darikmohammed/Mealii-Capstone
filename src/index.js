@@ -24,10 +24,9 @@ const likeEventButton = () => {
         (element) => element.item_id === likeButton.getAttribute('id')
       );
       const updatelike = document.querySelector(
-        `#count-likes-${likeButton.getAttribute('id')}`
+        `.count-likes-${likeButton.getAttribute('id')}`
       );
-      updatelike.textContent = item.likes;
-      console.log(item.likes);
+      updatelike.textContent = `${item.likes} Likes`;
     });
   });
 };
@@ -81,14 +80,16 @@ const displayCatagories = async () => {
   const allMeal = await mealAPI.generateMeals('Beef');
   Meals.innerHTML = '';
   mealCategoryHeader.textContent = 'Our Beef Meal Category';
-  allMeal.meals.forEach((meal) => {
+  allMeal.meals.forEach(async (meal) => {
+    const likes = await involvementAPI.getLikes();
+    const item = likes.find((element) => element.item_id === meal.idMeal);
     Meals.innerHTML += `<div class="card">
     <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
     <div class="description">
     <h3>${meal.strMeal}</h3>
       <div class ="like-description" id="${meal.idMeal}">
         <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
-        <span id="count-likes" class="count-likes-${meal.idMeal}">5 likes<span>
+        <span id="count-likes" class="count-likes-${meal.idMeal}">${item.likes} Likes<span>
       </div>
     </div> <br>
     <button class="comment-btn" id="${meal.idMeal}">Comment</button>
@@ -109,14 +110,16 @@ const displayCatagories = async () => {
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
         'id'
       )} Meal Category`;
-      allMeal.meals.forEach((meal) => {
+      allMeal.meals.forEach(async (meal) => {
+        const likes = await involvementAPI.getLikes();
+        const item = likes.find((element) => element.item_id === meal.idMeal);
         Meals.innerHTML += `<div class="card">
         <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <div class="description">
         <h3>${meal.strMeal}</h3>
           <div class="like-description" id="${meal.idMeal}">
             <span id="like-icon"><i class="fa-solid fa-heart"></i></span>
-            <span id="count-likes" class="count-likes-${meal.idMeal}">5 likes<span>
+            <span id="count-likes" class="count-likes-${meal.idMeal}">${item.likes} Likes<span>
           </div>
         </div> <br>
         <button class="comment-btn" id="${meal.idMeal}">Comment</button>
