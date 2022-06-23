@@ -11,6 +11,27 @@ const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
 const involvementAPI = new InvolvementAPI();
 
+const likeEventButton = () => {
+  // create an event listener for the like buttons
+  const likeButtons = document.querySelectorAll('.like-description');
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener('click', async () => {
+      console.log('tested...');
+      await involvementAPI.postLike(likeButton.getAttribute('id'));
+
+      const likes = await involvementAPI.getLikes();
+      const item = likes.find(
+        (element) => element.item_id === likeButton.getAttribute('id')
+      );
+      const updatelike = document.querySelector(
+        `#count-likes-${likeButton.getAttribute('id')}`
+      );
+      updatelike.textContent = item.likes;
+      console.log(item.likes);
+    });
+  });
+};
+
 // EventListener for the commentbutton
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
@@ -65,9 +86,9 @@ const displayCatagories = async () => {
     <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
     <div class="description">
     <h3>${meal.strMeal}</h3>
-      <div id="like-description">
+      <div class ="like-description" id="${meal.idMeal}">
         <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
-        <span id="count-likes">5 likes<span>
+        <span id="count-likes" class="count-likes-${meal.idMeal}">5 likes<span>
       </div>
     </div> <br>
     <button class="comment-btn" id="${meal.idMeal}">Comment</button>
@@ -75,13 +96,14 @@ const displayCatagories = async () => {
   });
 
   commentEventButton();
+  likeEventButton();
 
   // create an event listener for the meal buttons
   const mealButtons = document.querySelectorAll('.catagory-button');
   mealButtons.forEach((mealButton) => {
     mealButton.addEventListener('click', async () => {
       const allMeal = await mealAPI.generateMeals(
-        mealButton.getAttribute('id'),
+        mealButton.getAttribute('id')
       );
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
@@ -92,9 +114,9 @@ const displayCatagories = async () => {
         <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
         <div class="description">
         <h3>${meal.strMeal}</h3>
-          <div id="like-description">
+          <div class="like-description" id="${meal.idMeal}">
             <span id="like-icon"><i class="fa-solid fa-heart"></i></span>
-            <span id="count-likes">5 likes<span>
+            <span id="count-likes" class="count-likes-${meal.idMeal}">5 likes<span>
           </div>
         </div> <br>
         <button class="comment-btn" id="${meal.idMeal}">Comment</button>
@@ -102,22 +124,7 @@ const displayCatagories = async () => {
       });
       // create an event listener for the comment buttons
       commentEventButton();
-    });
-  });
-
-  // create an event listener for the like buttons
-  const likeButtons = document.querySelectorAll('#like-icon');
-  console.log(likeButtons);
-  likeButtons.forEach((likeButton) => {
-    likeButton.addEventListener('click', async () => {
-      console.log('tested...');
-      const alllikes = await involvementAPI.postLike(
-        likeButton.getAttribute('id'),
-      );
-      alllikes.likes.forEach((like) => {
-        const MealLikes = document.getElementById('count-likes');
-        MealLikes.innerHTML += `${like.likes} likes`;
-      });
+      likeEventButton();
     });
   });
 };
@@ -129,4 +136,3 @@ closeBtn.addEventListener('click', () => {
 displayCatagories();
 
 // Involvement API
-

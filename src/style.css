@@ -162,13 +162,14 @@ footer {
   margin-bottom: 2rem;
 }
 
-#like-description {
+.like-description {
   align-self: flex-start;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 1rem;
   gap: 1rem;
+  cursor: pointer;
 }
 
 article {
