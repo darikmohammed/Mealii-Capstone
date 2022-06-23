@@ -3,12 +3,14 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 import MealAPI from './modules/mealAPI.js';
+import InvolvementAPI from './modules/InvolvementAPI.js';
 
 const Meals = document.querySelector('#cards');
 const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('.close-modal');
 const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
+const involvementAPI = new InvolvementAPI();
 
 // EventListener for the commentbutton
 const commentEventButton = () => {
@@ -17,6 +19,13 @@ const commentEventButton = () => {
     button.addEventListener('click', async () => {
       modal.style.display = 'block';
       const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
+      //   const comments = await involvementAPI.getComment(
+      //     button.getAttribute('id'),
+      //   );
+      // add formbutton id
+      document
+        .querySelector('#comment-form button')
+        .setAttribute('id', meals.meals[0].idMeal);
       document.querySelector(
         '.meal-thumb',
       ).innerHTML = `<img src="${meals.meals[0].strMealThumb}"
@@ -32,12 +41,6 @@ const commentEventButton = () => {
         class="fa-brands fa-youtube"></i>
     <p>YouTube</p>
 </a>`;
-      const tags = meals.meals[0].strTags.split(',');
-      const ulTags = document.querySelector('.meal-tags ul');
-      ulTags.innerHTML = '';
-      tags.forEach((tag) => {
-        ulTags.innerHTML += `<li>${tag}</li>`;
-      });
     });
   });
 };
@@ -108,3 +111,24 @@ closeBtn.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 displayCatagories();
+
+// Involvement API
+const commentForm = document.querySelector('#comment-form');
+
+commentForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const id = document.querySelector('#comment-form button').getAttribute('id');
+  const name = document.querySelector('#comment-form input').value;
+  const comment = document.querySelector('#comment-form textarea').value;
+  const result = await involvementAPI.createComment(id, name, comment);
+  document.querySelector('#comment-form textarea').value = '';
+  document.querySelector('#comment-form input').value = '';
+  const statusUpdate = document.querySelector('.new-comment-status');
+
+  statusUpdate.innerHTML = `${result}! Sucessfully.`;
+  statusUpdate.style.display = 'block';
+  statusUpdate.style.backgroundColor = '#39d42e';
+  setTimeout(() => {
+    statusUpdate.style.display = 'none';
+  }, 5000);
+});
