@@ -1,14 +1,15 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
-
 import MealAPI from './modules/mealAPI.js';
+//import LikeMeal from './modules/involvement.js'
 
 const Meals = document.querySelector('#cards');
 const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('.close-modal');
 const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
+//const likeMeal = new LikeMeal();
 
 // EventListener for the commentbutton
 const commentEventButton = () => {
