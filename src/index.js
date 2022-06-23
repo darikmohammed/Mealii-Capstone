@@ -62,9 +62,15 @@ const likeEventButton = () => {
       setTimeout(() => {
         statusUpdate.style.display = 'none';
       }, 5000);
-      //update the like display
-
-      console.log(result);
+      // update the like display
+      const likes = await involvementAPI.getLikes();
+      const item = likes.find(
+        (element) => element.item_id === button.getAttribute('id')
+      );
+      const likeDisplaySpan = document.querySelector(
+        `#span-${button.getAttribute('id')}`
+      );
+      likeDisplaySpan.innerHTML = `${item.likes} Likes`;
     });
   });
 };
