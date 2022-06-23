@@ -93,7 +93,7 @@ const displayCatagories = async () => {
         <div class="description">
         <h3>${meal.strMeal}</h3>
           <div id="like-description">
-            <span><i id="like-icon" class="fa-solid fa-heart"></i></span>
+            <span id="like-icon"><i class="fa-solid fa-heart"></i></span>
             <span id="count-likes">5 likes<span>
           </div>
         </div> <br>
@@ -107,6 +107,7 @@ const displayCatagories = async () => {
 
   // create an event listener for the like buttons
   const likeButtons = document.querySelectorAll('#like-icon');
+  console.log(likeButtons);
   likeButtons.forEach((likeButton) => {
     likeButton.addEventListener('click', async () => {
       console.log('tested...');
