@@ -6,6 +6,18 @@ class Counter {
     }
     return commentCount;
   };
+
+  // Category count
+  categoryCounter = (catagories) => {
+    const categoryCount = catagories.meals.length;
+    return categoryCount;
+  };
+
+  // Meal count
+  mealCounter = (dishes) => {
+    const dishesCount = dishes.meals.length;
+    return dishesCount;
+  };
 }
 
 module.exports = Counter;

@@ -102,6 +102,8 @@ const likeEventButton = () => {
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
+  const catagoriesCount = counterModule.categoryCounter(catagories);
+  document.getElementById('count-meals').innerHTML = `All meal categories (${catagoriesCount})`;
   const catagoriesList = document.querySelector(
     '.meal-catagories-list .meal-catagories',
   );
@@ -113,9 +115,10 @@ const displayCatagories = async () => {
   });
 
   const allMeal = await mealAPI.generateMeals('Beef');
+  const dishCount = counterModule.mealCounter(allMeal);
   const likes = await involvementAPI.getLikes();
   Meals.innerHTML = '';
-  mealCategoryHeader.textContent = 'Our Beef Meal Category';
+  mealCategoryHeader.textContent = `Our Beef Meal Category (${dishCount})`;
   allMeal.meals.forEach((meal) => {
     let item = likes.find((element) => element.item_id === meal.idMeal);
     if (item === undefined) {
@@ -147,10 +150,11 @@ const displayCatagories = async () => {
         mealButton.getAttribute('id'),
       );
       const likes = await involvementAPI.getLikes();
+      const dishCount = counterModule.mealCounter(allMeal);
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
         'id',
-      )} Meal Category`;
+      )} Meal Category (${dishCount})`;
       allMeal.meals.forEach((meal) => {
         let item = likes.find((element) => element.item_id === meal.idMeal);
         if (item === undefined) {
