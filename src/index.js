@@ -109,9 +109,10 @@ const displayCatagories = async () => {
   });
 
   const allMeal = await mealAPI.generateMeals('Beef');
+  const countDishes = allMeal.meals.length;
   const likes = await involvementAPI.getLikes();
   Meals.innerHTML = '';
-  mealCategoryHeader.textContent = 'Our Beef Meal Category';
+  mealCategoryHeader.textContent = `Our Beef Meal Categories (${countDishes})`;
   allMeal.meals.forEach((meal) => {
     let item = likes.find((element) => element.item_id === meal.idMeal);
     if (item === undefined) {
@@ -142,11 +143,12 @@ const displayCatagories = async () => {
       const allMeal = await mealAPI.generateMeals(
         mealButton.getAttribute('id'),
       );
+      const countDishes = allMeal.meals.length;
       const likes = await involvementAPI.getLikes();
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
         'id',
-      )} Meal Category`;
+      )} Meal Categories (${countDishes})`;
       allMeal.meals.forEach((meal) => {
         let item = likes.find((element) => element.item_id === meal.idMeal);
         if (item === undefined) {
