@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 
 import MealAPI from './modules/mealAPI.js';
 import InvolvementAPI from './modules/InvolvementAPI.js';
+import Counter from './modules/Counter.js';
 
 const Meals = document.querySelector('#cards');
 const modal = document.querySelector('.modal');
@@ -11,7 +12,7 @@ const closeBtn = document.querySelector('.close-modal');
 const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
 const involvementAPI = new InvolvementAPI();
-
+const counterModule = new Counter();
 // EventListener for the commentbutton
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
@@ -22,7 +23,12 @@ const commentEventButton = () => {
       const comments = await involvementAPI.getComment(
         button.getAttribute('id'),
       );
-      // add formbutton id
+      // add comment counter
+      const commentCount = counterModule.commentCounter(comments);
+      document.querySelector(
+        '.meal-comment-list .message-count',
+      ).textContent = `${commentCount} Comments`;
+      // display comment
       const commentDiv = document.querySelector('.meal-comments');
       commentDiv.innerHTML = '<h2>Comments</h2>';
       if (comments.error) {
@@ -43,7 +49,7 @@ const commentEventButton = () => {
       </div>`;
         });
       }
-
+      // ----- end displaly comment id------
       document
         .querySelector('#comment-form button')
         .setAttribute('id', meals.meals[0].idMeal);
@@ -198,6 +204,10 @@ commentForm.addEventListener('submit', async (e) => {
   setTimeout(async () => {
     statusUpdate.style.display = 'none';
     const comments = await involvementAPI.getComment(id);
+    const commentCount = counterModule.commentCounter(comments);
+    document.querySelector(
+      '.meal-comment-list .message-count',
+    ).textContent = `${commentCount} Comments`;
     // add formbutton id
     const commentDiv = document.querySelector('.meal-comments');
     commentDiv.innerHTML = '<h2>Comments</h2>';
