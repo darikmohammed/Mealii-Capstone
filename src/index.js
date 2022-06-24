@@ -249,18 +249,23 @@ searchForm.addEventListener('submit', async (e) => {
   const meals = await mealAPI.getMealByName(
     document.querySelector('#search-meal').value
   );
-  const likes = await involvementAPI.getLikes();
-  const dishCount = counterModule.mealCounter(meals);
-  Meals.innerHTML = '';
-  mealCategoryHeader.textContent = `Search Result (${dishCount})`;
-  meals.meals.forEach((meal) => {
-    let item = likes.find((element) => element.item_id === meal.idMeal);
-    if (item === undefined) {
-      item = {
-        likes: 0,
-      };
-    }
-    Meals.innerHTML += `<div class="card">
+  console.log(meals.meals);
+  if (!meals.meals) {
+    Meals.innerHTML = '';
+    mealCategoryHeader.textContent = 'Search Result (0) : NO RESULT FOUND!';
+  } else {
+    const likes = await involvementAPI.getLikes();
+    const dishCount = counterModule.mealCounter(meals);
+    Meals.innerHTML = '';
+    mealCategoryHeader.textContent = `Search Result (${dishCount})`;
+    meals.meals.forEach((meal) => {
+      let item = likes.find((element) => element.item_id === meal.idMeal);
+      if (item === undefined) {
+        item = {
+          likes: 0,
+        };
+      }
+      Meals.innerHTML += `<div class="card">
     <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
     <div class="description">
 <p class="new-like-status new-like-status-${meal.idMeal}">Created</p>
@@ -273,8 +278,9 @@ searchForm.addEventListener('submit', async (e) => {
     </div> <br>
     <button class="comment-btn" id="${meal.idMeal}">Comment</button>
 </div>`;
-  });
-  // create an event listener for the comment buttons
-  commentEventButton();
-  likeEventButton();
+    });
+    // create an event listener for the comment buttons
+    commentEventButton();
+    likeEventButton();
+  }
 });
