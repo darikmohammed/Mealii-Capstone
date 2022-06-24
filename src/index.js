@@ -13,31 +13,13 @@ const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
 const involvementAPI = new InvolvementAPI();
 
-// Category count
-const categoryCount = async () => {
-  const catagories = await mealAPI.receiveData();
-  const countMeals = catagories.meals.length;
-  return countMeals;
-};
-
-// Meal count
-const mealCount = async (dish) => {
-  const allMeal = await mealAPI.generateMeals(dish);
-  const countDishes = allMeal.meals.length;
-  return countDishes;
-};
-
 const counterModule = new Counter();
 // EventListener for the commentbutton
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
-  commentButtons.forEach((button) => {
-    button.addEventListener('click', async () => {
-      modal.style.display = 'block';
-      const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
-      const comments = await involvementAPI.getComment(
+  commentButtons.forEach((butComment(
         button.getAttribute('id'),
-      );
+      ),
       // add comment counter
       const commentCount = counterModule.commentCounter(comments);
       document.querySelector(
@@ -117,8 +99,8 @@ const likeEventButton = () => {
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
-  const countCat = await categoryCount();
-  document.getElementById('count-meals').innerHTML = `All Meal Categories (${countCat})`;
+  const categoriesCount = counterModule.categoryCounter(catagories);
+  document.getElementById('count-meals').innerHTML = `All Meal Categories (${categoriesCount})`;
   const catagoriesList = document.querySelector(
     '.meal-catagories-list .meal-catagories',
   );
