@@ -5,31 +5,135 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
+    <title>Mealii Store</title>
 <script defer src="main.js"></script></head>
 
 <body>
 
     <header>
         <div class="logo">
-            <h2 class="logo-text">Bookoe</h2>
-            <p class="logo-disc">Book store Website</p>
+            <h2 class="logo-text">Mealii</h2>
+            <p class="logo-disc">Meal store Website</p>
         </div>
+        <div id="count-meals"> </div>
         <div class="header-search">
             <form action="#" id="search-form">
-                <input type="text" name="search-book" id="search-book" placeholder="Search for a book">
+                <input type="text" name="search-meal" id="search-meal" placeholder="Search for a meal by name">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
     </header>
     <main>
-        
+        <!-- comment popup modals -->
+        <div class="modal">
+            <div class="modal-contain">
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+                <div class="meal-disc">
+                    <div class="meal-thumb">
+
+                    </div>
+
+                    <div class="meal">
+                        <div class="title">
+                            <h2 class="meal-title"></h2>
+                            <p class="meal-category"></p>
+                        </div>
+                        <div class="tags">
+                            <div class="meal-links">
+                                <ul>
+                                    <li class="meal-youtube">
+
+                                    </li>
+                                    <li class="meal-comment-list">
+                                        <i class="fa-solid fa-message"></i>
+                                        <p class="message-count"></p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="meal-instruction-header">
+                            <h2>Instruction</h2>
+                            <p class="meal-instructions"></p>
+                        </div>
+                        <div class="meal-comments">
+                            <h2>Comments</h2>
+                        </div>
+
+                        <div class="add-comments" id="mealId">
+                            <h2>Add Comment</h2>
+                            <p class="new-comment-status">Created</p>
+
+                            <form action="#" id="comment-form">
+                                <input type="text" name="name" id="name" placeholder="Your Name" required>
+                                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Your insights"
+                                    required></textarea>
+                                <button type="submit">Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    <article>
+        <section class="meal-catagories-list">
+            <h2>Our Meal Categories! Please Select one to view list of meals. </h2>
+            <ul class="meal-catagories">
+                <!-- mealCatagories of li displayed dynamcially -->
+            </ul>
+        </section>
+        <section class="row meal-card">
+            <h2 id="meals-category-header"></h2>
+            <div id="cards" class="cards"></div>
+        </section>
+    </article>
     <footer>
-
+        <div class="upper-footer">
+            <div>
+                <div class="logo">
+                    <h2 class="logo-text">Mealii</h2>
+                    <p class="logo-disc">Meal store Website</p>
+                </div>
+                <br><br>
+                <p>
+                    “A great restaurant is one that just makes you feel like you're not sure whether you
+                    went out or you came home and confuses you. If it can do both of those things at the
+                    same time, you're hooked.”
+                    ― Danny Meyer
+                </p> <br><br>
+                <h3>Follow us</h3><br>
+                <ul id="social-icons">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram-square"></i></a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Work With Us</h3>
+                <ul id="book-categories">
+                    <li><a href="#">Our Culture</a></li>
+                    <li><a href="#">Career With Us</a></li>
+                    <li><a href="#">Tender Opportunities </a></li>
+                    <li><a href="#">Customer Feedback </a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Get In Touch</h3>
+                <div id="contacts">
+                    <span><i id="contact-icons" class="fa-solid fa-phone"></i> +254719584717 / +251925106658 </span>
+                    <span><i id="contact-icons" class="fa-solid fa-envelope"></i>omayioben@gmail.com /
+                        r.m.darik@gmail.com </span>
+                </div>
+            </div>
+        </div><br>
+        <div class="lower-footer">
+            <p>Ben & Darik Restaurant - @ 2022 All Rights Reserved</p>
+            <p>Made with <span><i id="heart-icon" class="fa-solid fa-heart"></i></span> by Darick&Ben Tech Solutions</p>
+        </div>
     </footer>
-
-
 </body>
 
 </html>
