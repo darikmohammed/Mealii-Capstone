@@ -12,6 +12,20 @@ const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
 const involvementAPI = new InvolvementAPI();
 
+// Category count
+const categoryCount = async () => {
+  const catagories = await mealAPI.receiveData();
+  const countMeals = catagories.meals.length;
+  return countMeals;
+};
+
+// Meal count
+const mealCount = async () => {
+  const allMeal = await mealAPI.generateMeals('Beef');
+  const countDishes = allMeal.meals.length;
+  return countDishes;
+};
+
 // EventListener for the commentbutton
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
@@ -96,8 +110,8 @@ const likeEventButton = () => {
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
-  const countMeals = catagories.meals.length;
-  document.getElementById('count-meals').innerHTML = `All Meal Categories (${countMeals})`;
+  const countCat = await categoryCount();
+  document.getElementById('count-meals').innerHTML = `All Meal Categories (${countCat})`;
   const catagoriesList = document.querySelector(
     '.meal-catagories-list .meal-catagories',
   );
@@ -109,7 +123,7 @@ const displayCatagories = async () => {
   });
 
   const allMeal = await mealAPI.generateMeals('Beef');
-  const countDishes = allMeal.meals.length;
+  const countDishes = await mealCount();
   const likes = await involvementAPI.getLikes();
   Meals.innerHTML = '';
   mealCategoryHeader.textContent = `Our Beef Meal Categories (${countDishes})`;
