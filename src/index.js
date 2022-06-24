@@ -12,14 +12,17 @@ const closeBtn = document.querySelector('.close-modal');
 const mealCategoryHeader = document.querySelector('#meals-category-header');
 const mealAPI = new MealAPI();
 const involvementAPI = new InvolvementAPI();
-
 const counterModule = new Counter();
 // EventListener for the commentbutton
 const commentEventButton = () => {
   const commentButtons = document.querySelectorAll('.comment-btn');
-  commentButtons.forEach((butComment(
+  commentButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      modal.style.display = 'block';
+      const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
+      const comments = await involvementAPI.getComment(
         button.getAttribute('id'),
-      ),
+      );
       // add comment counter
       const commentCount = counterModule.commentCounter(comments);
       document.querySelector(
@@ -99,8 +102,8 @@ const likeEventButton = () => {
 
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
-  const categoriesCount = counterModule.categoryCounter(catagories);
-  document.getElementById('count-meals').innerHTML = `All Meal Categories (${categoriesCount})`;
+  const catagoriesCount = counterModule.categoryCounter(catagories);
+  document.getElementById('count-meals').innerHTML = `All meal categories (${catagoriesCount})`;
   const catagoriesList = document.querySelector(
     '.meal-catagories-list .meal-catagories',
   );
@@ -112,10 +115,10 @@ const displayCatagories = async () => {
   });
 
   const allMeal = await mealAPI.generateMeals('Beef');
-  const countDishes = await mealCount('Beef');
+  const dishCount = counterModule.mealCounter(allMeal);
   const likes = await involvementAPI.getLikes();
   Meals.innerHTML = '';
-  mealCategoryHeader.textContent = `Our Beef Meal Categories (${countDishes})`;
+  mealCategoryHeader.textContent = `Our Beef Meal Category (${dishCount})`;
   allMeal.meals.forEach((meal) => {
     let item = likes.find((element) => element.item_id === meal.idMeal);
     if (item === undefined) {
@@ -146,12 +149,12 @@ const displayCatagories = async () => {
       const allMeal = await mealAPI.generateMeals(
         mealButton.getAttribute('id'),
       );
-      const countDishes = allMeal.meals.length;
       const likes = await involvementAPI.getLikes();
+      const dishCount = counterModule.mealCounter(allMeal);
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
         'id',
-      )} Meal Categories (${countDishes})`;
+      )} Meal Category (${dishCount})`;
       allMeal.meals.forEach((meal) => {
         let item = likes.find((element) => element.item_id === meal.idMeal);
         if (item === undefined) {

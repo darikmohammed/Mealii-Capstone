@@ -9,19 +9,13 @@ class Counter {
 
   // Category count
   categoryCounter = (catagories) => {
-    let categoryCount = 0;
-    if (!catagories.error) {
-      categoryCount = catagories.length;
-    }
+    const categoryCount = catagories.meals.length;
     return categoryCount;
   };
 
   // Meal count
   mealCounter = (dishes) => {
-    let dishesCount = 0;
-    if (!dishes.error) {
-      dishesCount = dishes.length;
-    }
+    const dishesCount = dishes.meals.length;
     return dishesCount;
   };
 }
