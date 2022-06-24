@@ -20,8 +20,8 @@ const categoryCount = async () => {
 };
 
 // Meal count
-const mealCount = async () => {
-  const allMeal = await mealAPI.generateMeals('Beef');
+const mealCount = async (dish) => {
+  const allMeal = await mealAPI.generateMeals(dish);
   const countDishes = allMeal.meals.length;
   return countDishes;
 };
@@ -123,7 +123,7 @@ const displayCatagories = async () => {
   });
 
   const allMeal = await mealAPI.generateMeals('Beef');
-  const countDishes = await mealCount();
+  const countDishes = await mealCount('Beef');
   const likes = await involvementAPI.getLikes();
   Meals.innerHTML = '';
   mealCategoryHeader.textContent = `Our Beef Meal Categories (${countDishes})`;
