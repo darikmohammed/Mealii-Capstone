@@ -335,6 +335,7 @@ article {
 .tags .meal-tags ul {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .tags .meal-tags ul li {
