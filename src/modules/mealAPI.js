@@ -38,6 +38,17 @@ class MealAPI {
     const mealDetail = await response.json();
     return mealDetail;
   };
+
+  getMealByName = async (mealName) => {
+    const response = await fetch(`${this.baseURL}search.php?s=${mealName}`, {
+      method: 'GET',
+      header: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    const mealDetail = await response.json();
+    return mealDetail;
+  };
 }
 
 module.exports = MealAPI;

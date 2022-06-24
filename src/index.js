@@ -84,9 +84,6 @@ const likeEventButton = () => {
       statusUpdate.innerHTML = 'Liked!';
       statusUpdate.style.display = 'block';
       statusUpdate.style.backgroundColor = '#39d42e';
-      setTimeout(() => {
-        statusUpdate.style.display = 'none';
-      }, 5000);
       // update the like display
       const likes = await involvementAPI.getLikes();
       const item = likes.find(
@@ -96,6 +93,9 @@ const likeEventButton = () => {
         `#span-${button.getAttribute('id')}`,
       );
       likeDisplaySpan.innerHTML = `${item.likes} Likes`;
+      setTimeout(() => {
+        statusUpdate.style.display = 'none';
+      }, 5000);
     });
   });
 };
@@ -103,7 +103,9 @@ const likeEventButton = () => {
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
   const catagoriesCount = counterModule.categoryCounter(catagories);
-  document.getElementById('count-meals').innerHTML = `All meal categories (${catagoriesCount})`;
+  document.getElementById(
+    'count-meals',
+  ).innerHTML = `All meal categories (${catagoriesCount})`;
   const catagoriesList = document.querySelector(
     '.meal-catagories-list .meal-catagories',
   );
@@ -234,4 +236,48 @@ commentForm.addEventListener('submit', async (e) => {
       });
     }
   }, 5000);
+});
+
+// Search
+
+const searchForm = document.querySelector('#search-form');
+
+searchForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const meals = await mealAPI.getMealByName(
+    document.querySelector('#search-meal').value,
+  );
+  if (!meals.meals) {
+    Meals.innerHTML = '';
+    mealCategoryHeader.textContent = 'Search Result (0) : NO RESULT FOUND!';
+  } else {
+    const likes = await involvementAPI.getLikes();
+    const dishCount = counterModule.mealCounter(meals);
+    Meals.innerHTML = '';
+    mealCategoryHeader.textContent = `Search Result (${dishCount})`;
+    meals.meals.forEach((meal) => {
+      let item = likes.find((element) => element.item_id === meal.idMeal);
+      if (item === undefined) {
+        item = {
+          likes: 0,
+        };
+      }
+      Meals.innerHTML += `<div class="card">
+    <img id="meal-img" src="${meal.strMealThumb}" alt="${meal.strMeal}">
+    <div class="description">
+<p class="new-like-status new-like-status-${meal.idMeal}">Created</p>
+
+    <h3>${meal.strMeal}</h3>
+      <div id="like-description">
+        <span class="like-meal" id="${meal.idMeal}"><i id="like-icon" class="fa-solid fa-heart"></i></span>
+        <span id="span-${meal.idMeal}">${item.likes} Likes<span>
+      </div>
+    </div> <br>
+    <button class="comment-btn" id="${meal.idMeal}">Comment</button>
+</div>`;
+    });
+    // create an event listener for the comment buttons
+    commentEventButton();
+    likeEventButton();
+  }
 });
