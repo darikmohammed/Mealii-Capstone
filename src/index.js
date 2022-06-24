@@ -20,9 +20,17 @@ const commentEventButton = () => {
       modal.style.display = 'block';
       const meals = await mealAPI.getMealDetail(button.getAttribute('id'));
       const comments = await involvementAPI.getComment(
-        button.getAttribute('id'),
+        button.getAttribute('id')
       );
-      // add formbutton id
+      // add comment counter
+      let commentCount = 0;
+      if (!comments.error) {
+        commentCount = comments.length;
+      }
+      document.querySelector(
+        '.meal-comment-list .message-count'
+      ).textContent = `${commentCount} Comments`;
+      // display comment
       const commentDiv = document.querySelector('.meal-comments');
       commentDiv.innerHTML = '<h2>Comments</h2>';
       if (comments.error) {
@@ -43,21 +51,23 @@ const commentEventButton = () => {
       </div>`;
         });
       }
-
+      // ----- end displaly comment id------
       document
         .querySelector('#comment-form button')
         .setAttribute('id', meals.meals[0].idMeal);
       document.querySelector(
-        '.meal-thumb',
+        '.meal-thumb'
       ).innerHTML = `<img src="${meals.meals[0].strMealThumb}"
       alt="${meals.meals[0].strMeal}">`;
-      document.querySelector('.meal-title').textContent = meals.meals[0].strMeal;
+      document.querySelector('.meal-title').textContent =
+        meals.meals[0].strMeal;
       document.querySelector(
-        '.meal-category',
+        '.meal-category'
       ).textContent = `${meals.meals[0].strCategory}, ${meals.meals[0].strArea}`;
-      document.querySelector('.meal-instructions').textContent = meals.meals[0].strInstructions;
+      document.querySelector('.meal-instructions').textContent =
+        meals.meals[0].strInstructions;
       document.querySelector(
-        '.meal-youtube',
+        '.meal-youtube'
       ).innerHTML = `<a href="${meals.meals[0].strYoutube}"><i
         class="fa-brands fa-youtube"></i>
     <p>YouTube</p>
@@ -73,7 +83,7 @@ const likeEventButton = () => {
     button.addEventListener('click', async () => {
       await involvementAPI.postLike(button.getAttribute('id'));
       const statusUpdate = document.querySelector(
-        `.new-like-status-${button.getAttribute('id')}`,
+        `.new-like-status-${button.getAttribute('id')}`
       );
       statusUpdate.innerHTML = 'Liked!';
       statusUpdate.style.display = 'block';
@@ -84,10 +94,10 @@ const likeEventButton = () => {
       // update the like display
       const likes = await involvementAPI.getLikes();
       const item = likes.find(
-        (element) => element.item_id === button.getAttribute('id'),
+        (element) => element.item_id === button.getAttribute('id')
       );
       const likeDisplaySpan = document.querySelector(
-        `#span-${button.getAttribute('id')}`,
+        `#span-${button.getAttribute('id')}`
       );
       likeDisplaySpan.innerHTML = `${item.likes} Likes`;
     });
@@ -97,7 +107,7 @@ const likeEventButton = () => {
 const displayCatagories = async () => {
   const catagories = await mealAPI.receiveData();
   const catagoriesList = document.querySelector(
-    '.meal-catagories-list .meal-catagories',
+    '.meal-catagories-list .meal-catagories'
   );
   catagoriesList.innerHTML = '';
   catagories.meals.forEach((catagory) => {
@@ -138,12 +148,12 @@ const displayCatagories = async () => {
   mealButtons.forEach((mealButton) => {
     mealButton.addEventListener('click', async () => {
       const allMeal = await mealAPI.generateMeals(
-        mealButton.getAttribute('id'),
+        mealButton.getAttribute('id')
       );
       const likes = await involvementAPI.getLikes();
       Meals.innerHTML = '';
       mealCategoryHeader.textContent = `Our ${mealButton.getAttribute(
-        'id',
+        'id'
       )} Meal Category`;
       allMeal.meals.forEach((meal) => {
         let item = likes.find((element) => element.item_id === meal.idMeal);
@@ -198,6 +208,13 @@ commentForm.addEventListener('submit', async (e) => {
   setTimeout(async () => {
     statusUpdate.style.display = 'none';
     const comments = await involvementAPI.getComment(id);
+    let commentCount = 0;
+    if (!comments.error) {
+      commentCount = comments.length;
+    }
+    document.querySelector(
+      '.meal-comment-list .message-count'
+    ).textContent = `${commentCount} Comments`;
     // add formbutton id
     const commentDiv = document.querySelector('.meal-comments');
     commentDiv.innerHTML = '<h2>Comments</h2>';
