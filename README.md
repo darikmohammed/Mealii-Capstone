@@ -1,56 +1,70 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Mealii-Capstone
 
-> Description the project.
-
+> The Mealii Capstone website displays meals served at Mealii Meal Restourant. It also allows you to search by meal name, filter by category, comment and like on any specific meal. All data is preserved thanks to the TheMealDB API service.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
+- HTML5
+- CSS3
+- JavaScript ES6
+- Webpack
+- Jest
+- API
 ## Live Demo (if available)
 
-[Live Demo Link](https://livedemo.com)
-
+[Live Demo Link](https://darikmohammed.github.io/Mealii-Capstone/ )
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+- Visual Studio code or any Code Editor.
+
 ### Setup
 
-### Install
+#### Download the file to local directory
 
-### Usage
+- if you have already insall github in your local pc run:
 
-### Run tests
+```sh
+git clone git@github.com:darikmohammed/Mealii-Capstone.git
+```
 
-### Deployment
+- Or download the zip file from the github directory.
 
+#### Run the project locally
 
+- ```sh
+    npm install
+  ```
+- ```sh
+    npm start
+  ```
+
+#### Linters tests
+
+- Lighthouse
+- Webhint
+- Stylelint
+- node_modules checker
 
 ## Authors
 
-👤 **Author1**
+👤 **Darik Mohammed**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@githubhandle](https://github.com/darikmohammed)
+- Twitter: [@twitterhandle](https://twitter.com/r_darik)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/darik-mohammed-57352120b/)
 
-👤 **Author2**
+👤 **Ben Kiboma**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@kiboma2021](https://github.com/kiboma2021)
+- Twitter: [@BenOmayio](https://twitter.com/omayiobenj)
+- LinkedIn: [@BenOmayio](https://www.linkedin.com/in/ben-omayio-74622469/)
 
 ## 🤝 Contributing
 
