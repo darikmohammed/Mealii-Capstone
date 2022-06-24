@@ -17,6 +17,10 @@
   display: table;
 }
 
+.logo-text {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   cursor: pointer;

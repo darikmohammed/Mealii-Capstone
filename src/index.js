@@ -281,3 +281,11 @@ searchForm.addEventListener('submit', async (e) => {
     likeEventButton();
   }
 });
+
+// Logo locating home page
+
+const Logo = document.querySelector('.logo-text');
+
+Logo.addEventListener('click', () => {
+  displayCatagories();
+});
